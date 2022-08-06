@@ -1,44 +1,87 @@
+import axios from 'axios';
+import { createApi } from '@reduxjs/toolkit/query/react';
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
-const contactsList = [
-  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-];
+const axiosBaseQuery =
+  ({ baseUrl } = { baseUrl: '' }) =>
+  async ({ url, method, data, params }) => {
+    try {
+      const result = await axios({ url: baseUrl + url, method, data, params });
+      return { data: result.data };
+    } catch (axiosError) {
+      let err = axiosError;
+      return {
+        error: {
+          status: err.response?.status,
+          data: err.response?.data || err.message,
+        },
+      };
+    }
+  };
 
-// Slice
-const contacts = createSlice({
-  name: 'contacts:',
-  initialState: {
-    item: contactsList,
-    filter: '',
-  },
+export const contactsApi = createApi({
+  reducerPath: 'contacts',
+  baseQuery: axiosBaseQuery({
+    baseUrl: 'https://62dd5ef1ccdf9f7ec2c60cc5.mockapi.io',
+  }),
+  tagTypes: ['Contacts'],
+  endpoints: builder => ({
+    getContacts: builder.query({
+      query: () => ({
+        url: '/contacts',
+        method: 'GET',
+      }),
+      providesTags: ['Contacts'],
+    }),
+    getContactsById: builder.query({
+      query: id => ({
+        url: `/contacts/${id}`,
+        method: 'GET',
+      }),
+      providesTags: ['Contacts'],
+    }),
+    addContacts: builder.mutation({
+      query: values => ({
+        url: '/contacts',
+        method: 'POST',
+        body: values,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+    deleteContacts: builder.mutation({
+      query: id => ({
+        url: `/contacts/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+    updateContacts: builder.mutation({
+      query: fields => ({
+        url: `/contacts/${fields.id}`,
+        method: 'PUT',
+        body: fields,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+  }),
+});
+
+export const {
+  useGetContactsQuery,
+  useAddContactsMutation,
+  useDeleteContactsMutation,
+  useGetContactsByIdQuery,
+  useUpdateContactsMutation,
+} = contactsApi;
+
+export const filterContacts = createSlice({
+  name: 'filter',
+  initialState: { value: '' },
   reducers: {
-    newContacts(state, action) {
-      state.item = [...state.item, action.payload];
-    },
-    deleteC(state, action) {
-      state.item = state.item.filter(x => x.id !== action.payload);
-    },
-    filterValue(state, action) {
-      state.filter = action.payload;
+    setFilter(state, action) {
+      state.value = action.payload;
     },
   },
 });
 
-const persistConfig = {
-  key: 'contacts-list',
-  storage,
-  whitelist: ['item'],
-};
-
-export const contactsReducer = persistReducer(persistConfig, contacts.reducer);
-export const { newContacts, deleteC, filterValue } = contacts.actions;
-
-// Select
-
-export const getItem = state => state.contacts.item;
-export const getFilter = state => state.contacts.filter;
+export const { setFilter } = filterContacts.actions;
