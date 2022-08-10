@@ -1,41 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NameContacts, List, Elements, Button } from './ContactList.styled';
-import {
-  useDeleteContactsMutation,
-  useGetContactsQuery,
-} from 'redux/itemsContact';
-
-// const useContacts = () => {
-//   const filter = useSelector(state => state.filter.value);
-
-//   const selectFilteredContacts = useMemo(() => {
-//     return createSelector(
-//       [response => response.data, (_, filter) => filter],
-//       (contacts, filter) => {
-//         return (
-//           contacts?.filter(m =>
-//             m.title.toLowerCase().includes(filter.toLowerCase())
-//           ) ?? []
-//         );
-//       }
-//     );
-//   }, []);
-
-//   return useGetContactsQuery(undefined, {
-//     selectFromResult(result) {
-//       return {
-//         ...result,
-//         filteredMaterials: selectFilteredContacts(result, filter),
-//       };
-//     },
-//   });
-// };
+import { List } from './ContactList.styled';
+import { Contact } from './Contact';
+import { useContacts } from './../../../hook/useContacts';
 
 const ContactList = () => {
-  const { data, isLoading, error } = useGetContactsQuery();
-  const [deleteMaterial, { isLoading: isLoadingDelete }] =
-    useDeleteContactsMutation();
+  const { filteredContacts, isLoading, error } = useContacts();
 
   return (
     <List>
@@ -43,20 +13,8 @@ const ContactList = () => {
         ? error.data
         : isLoading
         ? 'НАДА НАМАЛЮВАТИ СПІНЕР'
-        : data.map(({ id, name, number }) => (
-            <Elements key={`${id}${number}`}>
-              <NameContacts>
-                {name}: {number}
-              </NameContacts>
-              <Button
-                type="button"
-                name={id}
-                onClick={() => deleteMaterial(id)}
-                disabled={isLoadingDelete}
-              >
-                Delete
-              </Button>
-            </Elements>
+        : filteredContacts.map(x => (
+            <Contact data={x} key={`${x.id}${x.phone}`} />
           ))}
     </List>
   );
