@@ -18,12 +18,12 @@ export default function App() {
       <Containet>
         <div>
           <H1>Phonebook</H1>
-          <ContactForm />
+          {/* <ContactForm /> */}
         </div>
 
         <DivList>
           <h2>Contacts</h2>
-          <Filter />
+          {/* <Filter /> */}
           <ContactList />
         </DivList>
       </Containet>

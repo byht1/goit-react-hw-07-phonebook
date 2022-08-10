@@ -1,42 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NameContacts, List, Elements, Button } from './ContactList.styled';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteC, getFilter, getItem } from 'redux/itemsContact';
+import {
+  useDeleteContactsMutation,
+  useGetContactsQuery,
+} from 'redux/itemsContact';
+
+// const useContacts = () => {
+//   const filter = useSelector(state => state.filter.value);
+
+//   const selectFilteredContacts = useMemo(() => {
+//     return createSelector(
+//       [response => response.data, (_, filter) => filter],
+//       (contacts, filter) => {
+//         return (
+//           contacts?.filter(m =>
+//             m.title.toLowerCase().includes(filter.toLowerCase())
+//           ) ?? []
+//         );
+//       }
+//     );
+//   }, []);
+
+//   return useGetContactsQuery(undefined, {
+//     selectFromResult(result) {
+//       return {
+//         ...result,
+//         filteredMaterials: selectFilteredContacts(result, filter),
+//       };
+//     },
+//   });
+// };
 
 const ContactList = () => {
-  const dispatch = useDispatch();
-  const contacts = useSelector(getItem);
-  const filter = useSelector(getFilter);
-
-  function contactsFillet() {
-    if (filter === '') {
-      return false;
-    }
-
-    return contacts.filter(x => x.name.toLowerCase().includes(filter));
-  }
-
-  const fillter = contactsFillet();
-
-  const list = fillter ? fillter : contacts;
+  const { data, isLoading, error } = useGetContactsQuery();
+  const [deleteMaterial, { isLoading: isLoadingDelete }] =
+    useDeleteContactsMutation();
 
   return (
     <List>
-      {list.map(({ id, name, number }) => (
-        <Elements key={id}>
-          <NameContacts>
-            {name}: {number}
-          </NameContacts>
-          <Button
-            type="button"
-            name={id}
-            onClick={event => dispatch(deleteC(event.target.name))}
-          >
-            Delete
-          </Button>
-        </Elements>
-      ))}
+      {error
+        ? error.data
+        : isLoading
+        ? 'НАДА НАМАЛЮВАТИ СПІНЕР'
+        : data.map(({ id, name, number }) => (
+            <Elements key={`${id}${number}`}>
+              <NameContacts>
+                {name}: {number}
+              </NameContacts>
+              <Button
+                type="button"
+                name={id}
+                onClick={() => deleteMaterial(id)}
+                disabled={isLoadingDelete}
+              >
+                Delete
+              </Button>
+            </Elements>
+          ))}
     </List>
   );
 };
