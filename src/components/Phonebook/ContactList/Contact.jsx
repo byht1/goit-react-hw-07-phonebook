@@ -37,7 +37,7 @@ export const Contact = ({ data: { phone, id, name } }) => {
       </NameContacts>
       <Button
         type="button"
-        onClick={() => contactDelete(id)}
+        onClick={() => contactDelete(11111)}
         disabled={isLoading}
       >
         {isLoading ? (
