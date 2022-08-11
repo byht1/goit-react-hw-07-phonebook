@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List } from './ContactList.styled';
+import { List, PreLoader } from './ContactList.styled';
 import { Contact } from './Contact';
 import { useContacts } from './../../../hook/useContacts';
 
 const ContactList = () => {
   const { filteredContacts, isLoading, error } = useContacts();
 
-  return (
+  const isError = error ? (
+    error.data
+  ) : (
     <List>
-      {error
-        ? error.data
-        : isLoading
-        ? 'НАДА НАМАЛЮВАТИ СПІНЕР'
-        : filteredContacts.map(x => (
-            <Contact data={x} key={`${x.id}${x.phone}`} />
-          ))}
+      {filteredContacts.map(x => (
+        <Contact data={x} key={`${x.id}${x.phone}`} />
+      ))}
     </List>
   );
+
+  return <>{isLoading ? <PreLoader /> : isError}</>;
 };
 
 ContactList.propTypes = {

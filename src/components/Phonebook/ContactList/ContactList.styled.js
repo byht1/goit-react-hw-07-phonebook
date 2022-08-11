@@ -1,4 +1,9 @@
 import styled from '@emotion/styled';
+import Skeleton from '../Loader/Skeleton';
+
+export const PreLoader = styled(Skeleton)`
+  margin-top: 20px;
+`;
 
 export const List = styled.ul`
   margin-top: 20px;
@@ -17,7 +22,10 @@ export const NameContacts = styled.p`
 `;
 
 export const Button = styled.button`
-  display: block;
-  padding: 5px;
-  font-size: 0.8em;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

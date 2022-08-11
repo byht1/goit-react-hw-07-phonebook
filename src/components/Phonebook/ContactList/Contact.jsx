@@ -1,9 +1,35 @@
 import React from 'react';
 import { useDeleteContactsMutation } from 'redux/itemsContact';
 import { Button, Elements, NameContacts } from './ContactList.styled';
+import { MdDelete } from 'react-icons/md';
+import { TailSpin } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
+
+// MdDelete;
 
 export const Contact = ({ data: { phone, id, name } }) => {
-  const [deleteMaterial, { isLoading }] = useDeleteContactsMutation();
+  const [deleteMaterial, { isLoading, error }] = useDeleteContactsMutation();
+
+  const contactDelete = async id => {
+    await deleteMaterial(id);
+    if (!isLoading) {
+      notify(error);
+    }
+    return;
+  };
+
+  const notifySuccess = () => toast.success(`Hooray! We found images.`);
+
+  const notifyError = () => toast.error('Sorry, there are no');
+
+  function notify(info) {
+    if (info) {
+      notifyError();
+    } else {
+      notifySuccess();
+    }
+  }
+
   return (
     <Elements>
       <NameContacts>
@@ -11,10 +37,14 @@ export const Contact = ({ data: { phone, id, name } }) => {
       </NameContacts>
       <Button
         type="button"
-        onClick={() => deleteMaterial(id)}
+        onClick={() => contactDelete(id)}
         disabled={isLoading}
       >
-        Delete
+        {isLoading ? (
+          <TailSpin height="20" width="20" color="#000000" />
+        ) : (
+          <MdDelete size={20} />
+        )}
       </Button>
     </Elements>
   );
