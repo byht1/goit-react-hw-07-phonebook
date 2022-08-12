@@ -31,7 +31,7 @@ export const Button = styled.button`
   border-radius: 50%;
 `;
 
-export const ButtonPinc = styled(Button)`
+export const ButtonPink = styled(Button)`
   background-color: #ff226d;
 `;
 

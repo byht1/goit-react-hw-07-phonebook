@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetContactsQuery } from 'redux/itemsContact';
-import { getFilterContacts } from './../redux/filterfilterContacts';
+import { getFilterContacts } from '../redux/filterContacts';
 
 export const useContacts = () => {
   const filter = useSelector(getFilterContacts);

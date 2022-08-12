@@ -16,7 +16,7 @@ export const useContactForm = () => {
 
     const isDuplicate = contactList.filter(x => x.name === name);
     if (isDuplicate.length) {
-      toast.warning(`${name} is alredy in contacts`);
+      toast.warning(`${name} is already in contacts`);
       return;
     }
     const data = await post({ name, phone });

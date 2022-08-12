@@ -1,19 +1,19 @@
-import { Filter } from './Phonebook/Filter/Filter';
-import ContactForm from './Phonebook/ContactForm/ContactForm';
-import ContactList from './Phonebook/ContactList/ContactList';
-import { Section, Containet, H1, DivList } from './App.stiled';
+import { Filter } from './PhoneBook/Filter/Filter';
+import ContactForm from './PhoneBook/ContactForm/ContactForm';
+import ContactList from './PhoneBook/ContactList/ContactList';
+import { Section, Container, H1, DivList } from './App.styled';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { Topics } from './Phonebook/Topics/Topics';
+import { Topics } from './PhoneBook/Topics/Topics';
 
 export default function App() {
   return (
     <>
       <Section>
-        <Containet>
+        <Container>
           <div>
-            <H1>Phonebook</H1>
+            <H1>PhoneBook</H1>
             <ContactForm />
           </div>
 
@@ -22,7 +22,7 @@ export default function App() {
             <Filter />
             <ContactList />
           </DivList>
-        </Containet>
+        </Container>
       </Section>
 
       <Topics />

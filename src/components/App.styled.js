@@ -12,7 +12,7 @@ export const Section = styled.section`
   color: white;
 `;
 
-export const Containet = styled.div`
+export const Container = styled.div`
   padding: 20px 30px;
   background-color: var(--background-section);
   border-radius: 6px;

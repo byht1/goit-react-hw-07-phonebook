@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
 import {
   Div,
-  ButtonPinc,
+  ButtonPink,
   ButtonDark,
   Li,
   ButtonGrin,
@@ -18,7 +18,7 @@ export const Topics = () => {
     <Div>
       <ul>
         <Li>
-          <ButtonPinc onClick={() => setTopics('pink')} />
+          <ButtonPink onClick={() => setTopics('pink')} />
         </Li>
         <Li>
           <ButtonDark onClick={() => setTopics('dark')} />

@@ -2,7 +2,7 @@ import { Button, Elements, NameContacts } from './ContactList.styled';
 import { MdDelete } from 'react-icons/md';
 import { TailSpin } from 'react-loader-spinner';
 import PropTypes from 'prop-types';
-import { useDelete } from './../../../hook/useDelete';
+import { useDelete } from '../../../hook/useDelete';
 
 export const Contact = ({ data: { phone, id, name } }) => {
   const { deleteContact, isLoading } = useDelete();

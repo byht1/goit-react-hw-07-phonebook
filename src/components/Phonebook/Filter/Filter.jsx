@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Input, Span } from './Filter.styled';
-import { setFilter } from 'redux/filterfilterContacts';
-import { getFilterContacts } from 'redux/filterfilterContacts';
+import { setFilter } from 'redux/filterContacts';
+import { getFilterContacts } from 'redux/filterContacts';
 
 export const Filter = () => {
   const dispatch = useDispatch();
