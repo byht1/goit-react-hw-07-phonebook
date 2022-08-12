@@ -1,17 +1,8 @@
-import React, { useState } from 'react';
-import { useAddContactsMutation } from 'redux/itemsContact';
 import { Span, Input, Button, Form } from './ContactForm.styled';
+import { useContactForm } from 'hook/useContactForm';
 
 export default function ContactForm() {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [post] = useAddContactsMutation();
-  const onSubmit = async e => {
-    e.preventDefault();
-    await post({ name, phone });
-    setName('');
-    setPhone('');
-  };
+  const { name, setName, phone, setPhone, onSubmit } = useContactForm();
 
   return (
     <Form onSubmit={onSubmit}>

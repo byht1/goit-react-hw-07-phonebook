@@ -2,35 +2,10 @@ import { createSelector } from '@reduxjs/toolkit';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetContactsQuery } from 'redux/itemsContact';
-
-// export const useContacts = () => {
-//   const filter = useSelector(state => state.filter.value);
-
-//   const selectFilteredMaterials = useMemo(() => {
-//     return createSelector(
-//       [response => response.data, (_, filter) => filter],
-//       (materials, filter) => {
-//         return (
-//           materials?.filter(m =>
-//             m.title.toLowerCase().includes(filter.toLowerCase())
-//           ) ?? []
-//         );
-//       }
-//     );
-//   }, []);
-
-//   return useGetContactsQuery(undefined, {
-//     selectFromResult(result) {
-//       return {
-//         ...result,
-//         filteredMaterials: selectFilteredMaterials(result, filter),
-//       };
-//     },
-//   });
-// };
+import { getFilterContacts } from './../redux/filterfilterContacts';
 
 export const useContacts = () => {
-  const filter = useSelector(state => state.filter.value);
+  const filter = useSelector(getFilterContacts);
 
   const selectFilteredContacts = useMemo(() => {
     return createSelector(

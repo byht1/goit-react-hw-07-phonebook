@@ -1,6 +1,5 @@
 // import axios from 'axios';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { createSlice } from '@reduxjs/toolkit';
 
 // const axiosBaseQuery =
 //   ({ baseUrl } = { baseUrl: '' }) =>
@@ -56,15 +55,3 @@ export const {
   useAddContactsMutation,
   useDeleteContactsMutation,
 } = contactsApi;
-
-export const filterContacts = createSlice({
-  name: 'filter',
-  initialState: { value: '' },
-  reducers: {
-    setFilter(state, action) {
-      state.value = action.payload;
-    },
-  },
-});
-
-export const { setFilter } = filterContacts.actions;

@@ -1,34 +1,11 @@
-import React from 'react';
-import { useDeleteContactsMutation } from 'redux/itemsContact';
 import { Button, Elements, NameContacts } from './ContactList.styled';
 import { MdDelete } from 'react-icons/md';
 import { TailSpin } from 'react-loader-spinner';
-import { toast } from 'react-toastify';
-
-// MdDelete;
+import PropTypes from 'prop-types';
+import { useDelete } from './../../../hook/useDelete';
 
 export const Contact = ({ data: { phone, id, name } }) => {
-  const [deleteMaterial, { isLoading, error }] = useDeleteContactsMutation();
-
-  const contactDelete = async id => {
-    await deleteMaterial(id);
-    if (!isLoading) {
-      notify(error);
-    }
-    return;
-  };
-
-  const notifySuccess = () => toast.success(`Hooray! We found images.`);
-
-  const notifyError = () => toast.error('Sorry, there are no');
-
-  function notify(info) {
-    if (info) {
-      notifyError();
-    } else {
-      notifySuccess();
-    }
-  }
+  const { deleteContact, isLoading } = useDelete();
 
   return (
     <Elements>
@@ -37,7 +14,7 @@ export const Contact = ({ data: { phone, id, name } }) => {
       </NameContacts>
       <Button
         type="button"
-        onClick={() => contactDelete(11111)}
+        onClick={() => deleteContact(id)}
         disabled={isLoading}
       >
         {isLoading ? (
@@ -48,4 +25,12 @@ export const Contact = ({ data: { phone, id, name } }) => {
       </Button>
     </Elements>
   );
+};
+
+Contact.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+  }),
 };
