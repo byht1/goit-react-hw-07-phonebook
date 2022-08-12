@@ -8,13 +8,13 @@ export const Section = styled.section`
 
   font-family: 'Quicksand', sans-serif;
 
-  /* background-color: #ff226d; */
+  background-color: var(--background-section);
   color: white;
 `;
 
 export const Containet = styled.div`
   padding: 20px 30px;
-  background: #ff226d;
+  background-color: var(--background-section);
   border-radius: 6px;
   backdrop-filter: blur(15px);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -37,5 +37,5 @@ export const DivList = styled.div`
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-left: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 5px 5px 30px rgb(0 0 0 / 20%);
-  background: #fd4884;
+  background-color: var(--contact-list);
 `;

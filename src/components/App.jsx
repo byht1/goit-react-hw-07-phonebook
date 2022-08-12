@@ -5,6 +5,7 @@ import { Section, Containet, H1, DivList } from './App.stiled';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Topics } from './Phonebook/Topics/Topics';
 
 export default function App() {
   return (
@@ -23,6 +24,8 @@ export default function App() {
           </DivList>
         </Containet>
       </Section>
+
+      <Topics />
 
       <ToastContainer
         theme="colored"

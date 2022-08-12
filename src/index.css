@@ -1,5 +1,25 @@
 @import-normalize; /* bring in normalize.css styles */
 
+html[data-topics='pink'] {
+  --background-section: #ff226d;
+  --contact-list: #fd4884;
+}
+
+html[data-topics='dark'] {
+  --background-section: #031321;
+  --contact-list: #091d2e;
+}
+
+html[data-topics='grin'] {
+  --background-section: #22b642;
+  --contact-list: #34ce55;
+}
+
+html[data-topics='violet'] {
+  --background-section: #d52af3;
+  --contact-list: #d953f0;
+}
+
 * {
   box-sizing: border-box;
 }

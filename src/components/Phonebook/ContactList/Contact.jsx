@@ -18,7 +18,7 @@ export const Contact = ({ data: { phone, id, name } }) => {
         disabled={isLoading}
       >
         {isLoading ? (
-          <TailSpin height="20" width="20" color="#000000" />
+          <TailSpin height="20" width="20" />
         ) : (
           <MdDelete size={20} />
         )}
