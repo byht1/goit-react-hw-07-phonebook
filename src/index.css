@@ -1,23 +1,27 @@
 @import-normalize; /* bring in normalize.css styles */
 
 html[data-topics='pink'] {
-  --background-section: #ff226d;
-  --contact-list: #fd4884;
+  --background-section: #ffb8d0;
+  --background-card-box: #cc3a6d;
+  --contact-list: #ce4c77;
 }
 
 html[data-topics='dark'] {
-  --background-section: #031321;
-  --contact-list: #091d2e;
+  --background-section: #243a4d;
+  --background-card-box: #334351;
+  --contact-list: #2d465b;
 }
 
 html[data-topics='grin'] {
-  --background-section: #22b642;
-  --contact-list: #34ce55;
+  --background-section: #6cc17e;
+  --background-card-box: #3d9751;
+  --contact-list: #69b279;
 }
 
 html[data-topics='violet'] {
-  --background-section: #d52af3;
-  --contact-list: #d953f0;
+  --background-section: #c498cc;
+  --background-card-box: #b54ec8;
+  --contact-list: #c38ecc;
 }
 
 * {

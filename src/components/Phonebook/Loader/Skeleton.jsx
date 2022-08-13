@@ -9,7 +9,7 @@ const TaskList = props => {
       height={162}
       viewBox="0 0 439 160"
       backgroundColor="#d9d9d9"
-      foregroundColor="#fd4884"
+      foregroundColor="var(--background-card-box)"
       {...props}
     >
       <rect x="392" y="6" rx="4" ry="4" width="47" height="20" />

@@ -8,10 +8,15 @@ import {
   ButtonViolet,
 } from './Topics.styled';
 
+const TOPICS__KEY = 'topics';
+
 export const Topics = () => {
-  const [topics, setTopics] = useState('pink');
+  const [topics, setTopics] = useState(
+    () => JSON.parse(window.localStorage.getItem(TOPICS__KEY)) ?? 'dark'
+  );
 
   useLayoutEffect(() => {
+    localStorage.setItem(TOPICS__KEY, JSON.stringify(topics));
     document.documentElement.setAttribute('data-topics', topics);
   }, [topics]);
   return (
