@@ -1,11 +1,11 @@
-import ContactForm from './PhoneBook/ContactForm/ContactForm';
-import ContactList from './PhoneBook/ContactList/ContactList';
-import { Section, Container, H1, DivList } from './App.styled';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { Topics } from './PhoneBook/Topics/Topics';
+import ContactForm from './PhoneBook/ContactForm/ContactForm';
+import ContactList from './PhoneBook/ContactList/ContactList';
 import { Filter } from './PhoneBook/Filter/Filter';
+import { Topics } from './PhoneBook/Topics/Topics';
+import { Section, Container, H1, DivList } from './App.styled';
 
 export default function App() {
   return (
