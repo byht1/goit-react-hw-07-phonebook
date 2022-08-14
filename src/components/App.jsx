@@ -2,10 +2,10 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { Section, Container, H1, DivList } from './App.styled';
-import { Filter } from './PhoneBook/Filter/Filter';
-import { ContactForm } from './PhoneBook/ContactForm/ContactForm';
-import { ContactList } from './PhoneBook/ContactList/ContactList';
-import { Topics } from './PhoneBook/Topics/Topics';
+import { Filter } from 'components/PhoneBook/Filter/Filter';
+import { ContactForm } from 'components/PhoneBook/ContactForm/ContactForm';
+import { ContactList } from 'components/PhoneBook/ContactList/ContactList';
+import { Topics } from 'components/PhoneBook/Topics/Topics';
 
 export default function App() {
   return (
