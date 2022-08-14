@@ -1,7 +1,8 @@
+import React from 'react';
 import { Span, Input, Button, Form } from './ContactForm.styled';
 import { useContactForm } from 'hook/useContactForm';
 
-export default function ContactForm() {
+export const ContactForm = () => {
   const { name, setName, phone, setPhone, onSubmit } = useContactForm();
 
   return (
@@ -37,4 +38,4 @@ export default function ContactForm() {
       <Button type="submit">Add contact</Button>
     </Form>
   );
-}
+};

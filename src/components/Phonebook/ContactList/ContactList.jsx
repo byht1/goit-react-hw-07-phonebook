@@ -3,7 +3,7 @@ import { List, PreLoader } from './ContactList.styled';
 import { Contact } from './Contact';
 import { useContacts } from 'hook/useContacts';
 
-const ContactList = () => {
+export const ContactList = () => {
   const { filteredContacts, isLoading, error } = useContacts();
 
   const isError = error ? (
@@ -18,5 +18,3 @@ const ContactList = () => {
 
   return <>{isLoading ? <PreLoader /> : isError}</>;
 };
-
-export default ContactList;
