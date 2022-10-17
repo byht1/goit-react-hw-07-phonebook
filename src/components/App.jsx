@@ -2,7 +2,7 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { Section, Container, H1, DivList } from './App.styled';
-import { Filter } from 'components/PhoneBook/Filter/Filter';
+import { Filter } from './PhoneBook/Filter/Filter';
 import { ContactForm } from 'components/PhoneBook/ContactForm/ContactForm';
 import { ContactList } from 'components/PhoneBook/ContactList/ContactList';
 import { Topics } from 'components/PhoneBook/Topics/Topics';
