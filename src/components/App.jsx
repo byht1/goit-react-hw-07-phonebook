@@ -1,8 +1,8 @@
 import { ToastContainer } from 'react-toastify';
-import { ContactForm } from 'components/PhoneBook/ContactForm/ContactForm';
-import { ContactList } from 'components/PhoneBook/ContactList/ContactList';
-import { Topics } from 'components/PhoneBook/Topics/Topics';
-import { Filter } from 'components/PhoneBook/Filter/Filter';
+import { ContactForm } from 'components/Phonebook/ContactForm/ContactForm';
+import { ContactList } from 'components/Phonebook/ContactList/ContactList';
+import { Topics } from 'components/Phonebook/Topics/Topics';
+import { Filter } from 'components/Phonebook/Filter/Filter';
 import { Section, Container, H1, DivList } from './App.styled';
 
 import 'react-toastify/dist/ReactToastify.css';
